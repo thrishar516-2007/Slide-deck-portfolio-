@@ -2,195 +2,126 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio Slide Deck</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slide Deck Portfolio</title>
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
     }
 
     html, body {
-      scroll-snap-type: y mandatory;
-      overflow-y: scroll;
-      height: 100vh;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
     }
 
-    section {
+    .slide {
+      display: none;
       height: 100vh;
-      scroll-snap-align: start;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      width: 100vw;
       padding: 40px;
-    }
-
-    header {
-      position: fixed;
+      color: white;
+      position: absolute;
       top: 0;
-      width: 100%;
-      background: #111;
-      color: #fff;
-      display: flex;
-      justify-content: space-between;
-      padding: 20px 40px;
-      z-index: 1000;
+      left: 0;
+      transition: opacity 0.6s ease;
     }
 
-    header nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
+    .active {
+      display: block;
     }
 
-    .hero {
-      background: linear-gradient(to right, #1f4037, #99f2c8);
-      color: white;
-    }
+    #slide1 { background: #1abc9c; }
+    #slide2 { background: #3498db; }
+    #slide3 { background: #9b59b6; }
+    #slide4 { background: #e74c3c; }
 
-    .hero h1 {
+    h1 {
       font-size: 3em;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 1.2em;
-    }
-
-    .achievements,
-    .projects,
-    .skills,
-    .contact {
-      background: #f4f4f4;
-      color: #333;
-      text-align: center;
-    }
-
-    h2 {
-      font-size: 2.5em;
       margin-bottom: 20px;
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .skills-list {
+    .nav-arrows {
+      position: absolute;
+      top: 50%;
+      width: 100%;
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 20px;
     }
 
-    .skills-list li {
-      background: #333;
-      color: white;
-      padding: 15px 25px;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    .projects .project-item {
-      margin: 10px 0;
-    }
-
-    .contact form {
-      display: flex;
-      flex-direction: column;
-      width: 300px;
-    }
-
-    .contact input,
-    .contact textarea {
-      margin-bottom: 15px;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    .contact button {
-      padding: 10px;
-      background: #1f4037;
-      color: white;
-      border: none;
+    .nav-arrows span {
       cursor: pointer;
+      font-size: 3em;
+      user-select: none;
+      color: white;
+      opacity: 0.6;
     }
 
-    .contact button:hover {
-      background: #14532d;
+    .nav-arrows span:hover {
+      opacity: 1;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="logo"><strong>MyPortfolio</strong></div>
-    <nav>
-      <a href="#hero">Home</a>
-      <a href="#achievements">Achievements</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <div class="slide active" id="slide1">
+    <h1>👋 Hello, I'm Jane Doe</h1>
+    <p>Front-End Developer & Designer</p>
+  </div>
 
-  <!-- Hero Section -->
-  <section id="hero" class="hero">
-    <h1>Hello, I'm [Your Name]</h1>
-    <p>Creative Developer | Problem Solver | Tech Enthusiast</p>
-  </section>
-
-  <!-- Achievements Section -->
-  <section id="achievements" class="achievements">
-    <h2>Achievements</h2>
+  <div class="slide" id="slide2">
+    <h1>💼 Projects</h1>
     <ul>
-      <li>🏆 Winner of XYZ Hackathon 2024</li>
-      <li>💡 Built an AI Chatbot using Python and NLP</li>
-      <li>🎓 Certified in Full Stack Web Development</li>
+      <li>Portfolio Website</li>
+      <li>React Dashboard</li>
+      <li>eCommerce Store</li>
     </ul>
-  </section>
+  </div>
 
-  <!-- Projects Section -->
-  <section id="projects" class="projects">
-    <h2>Projects</h2>
-    <div class="project-item">
-      <strong>Portfolio Website</strong> – A responsive site to showcase my work.
-    </div>
-    <div class="project-item">
-      <strong>Task Manager App</strong> – Built with JavaScript and localStorage.
-    </div>
-    <div class="project-item">
-      <strong>Weather Dashboard</strong> – API-based weather app in Python Flask.
-    </div>
-  </section>
+  <div class="slide" id="slide3">
+    <h1>📚 Skills</h1>
+    <p>HTML, CSS, JavaScript, React, UI/UX Design</p>
+  </div>
 
-  <!-- Skills Section -->
-  <section id="skills" class="skills">
-    <h2>Skills</h2>
-    <ul class="skills-list">
-      <li>CSS</li>
-      <li>C++</li>
-      <li>JavaScript</li>
-      <li>Python</li>
-    </ul>
-  </section>
+  <div class="slide" id="slide4">
+    <h1>📬 Contact Me</h1>
+    <p>Email: jane@example.com</p>
+    <p>LinkedIn: linkedin.com/in/janedoe</p>
+  </div>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <h2>Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+  <div class="nav-arrows">
+    <span onclick="prevSlide()">&#8592;</span>
+    <span onclick="nextSlide()">&#8594;</span>
+  </div>
 
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+  </script>
 </body>
 </html>
